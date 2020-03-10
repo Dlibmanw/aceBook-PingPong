@@ -47,6 +47,7 @@
           null
         ]
       },
+<<<<<<< HEAD
       "/Users/peterdean/Projects/GroupProjects/aceBook-PingPong/spec/features/user_can_update_posts_spec.rb": {
         "lines": [
           1,
@@ -67,6 +68,8 @@
           null
         ]
       },
+=======
+>>>>>>> master
       "/Users/peterdean/Projects/GroupProjects/aceBook-PingPong/spec/models/post_spec.rb": {
         "lines": [
           1,
@@ -90,6 +93,10 @@
         ]
       }
     },
+<<<<<<< HEAD
     "timestamp": 1583852151
+=======
+    "timestamp": 1583849540
+>>>>>>> master
   }
 }
