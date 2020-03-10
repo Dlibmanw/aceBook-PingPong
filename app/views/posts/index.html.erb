@@ -1,7 +1,29 @@
 <% @posts.each do |post| %>
-  <p><%= post.message %></p>
+  <div class="post">
+    <p><%= post.message %></p>
+    <button onclick="openForm()">Update</button>
+
+    <div class="form-popup" id="updateForm">
+      <form action="" method="post">
+        <label for="message">
+        <textarea name="message"><%= post.message %></textarea>
+        <button type="submit">Submit</button>
+        <button type="button" class="cancel" onclick="closeForm()">Cancel</button>
+      </form>
+    </div>
+  </div>
 <% end %>
 
 <%= link_to new_post_path do %>
   New post
 <% end %>
+
+<script>
+  function openForm() {
+    document.getElementById("updateForm").style.display = "block";
+  }
+
+  function closeForm() {
+    document.getElementById("updateForm").style.display = "none";
+  }
+</script>
