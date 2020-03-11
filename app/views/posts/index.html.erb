@@ -3,14 +3,14 @@
 <% @posts.each do |post| %>
   <div class="post">
     <p><%= post.message %></p>
-    <button onclick="openForm()">Update</button>
+    <button onclick="openForm(<%= post.id %>)">Update</button>
   </div>
 <% end %>
 
-<!-- <div class="form-popup" id="updateForm">
+<div class="form-popup" id="updateForm">
   <form>
     <label for="message">
-    <textarea class="message">Post Message</textarea>
+    <textarea class="message"></textarea>
     <button type="submit" class="Submit">Submit</button>
     <button type="button" class="cancel" onclick="closeForm()">Cancel</button>
   </form>
@@ -21,16 +21,17 @@ $(document).ready(function(){
   $("button.Submit").click(function(){
     var updatedPost = $("message")
     <!-- alert("did it work"); -->
-  <!-- });
-}); -->
-<!-- </script>  -->
+  });
+});
+</script>
 
 <%= link_to new_post_path do %>
   New post
 <% end %>
 
 <script>
-  function openForm() {
+  function openForm(id) {
+    var postID = id
     document.getElementById("updateForm").style.display = "block";
   }
 
