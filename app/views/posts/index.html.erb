@@ -5,12 +5,13 @@
     <p><%= post.message %></p>
     <button onclick="openForm(<%= post.id %>)">Update</button>
   </div>
+  
 <% end %>
 
 <div class="form-popup" id="updateForm">
   <form>
     <label for="message">
-    <textarea class="message"></textarea>
+    <textarea class="message"><%= Post.find_by($postID).message %></textarea>
     <button type="submit" class="Submit">Submit</button>
     <button type="button" class="cancel" onclick="closeForm()">Cancel</button>
   </form>
@@ -31,7 +32,7 @@ $(document).ready(function(){
 
 <script>
   function openForm(id) {
-    var postID = id
+    var postID = parseInt(id)
     document.getElementById("updateForm").style.display = "block";
   }
 
