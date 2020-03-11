@@ -7,21 +7,29 @@
   </div>
 
 <% end %>
-
 <div class="form-popup" id="updateForm">
-  <form >
-    <label for="message">
-    <input type="text" name="newMessage"></input>
-    <button type="button" class="Submit" >Submit</button>
+  <form action='postUpdate.php' method='POST'>
+    <label for="name">Name</label>
+    <input type="text" class='form-control' name="newMessage"></input>
+    <button type="submit" class="Submit" >Submit</button>
     <button type="button" class="cancel" onclick="closeForm()">Cancel</button>
   </form>
 </div>
-
 <script>
-  $("button.Submit").click(function(){
-    var newMessage = 'text'
-    <!-- alert("did it work"); -->
+  $(document).ready(function(){
+    $('form').submit(function(event){
+      var newMessage = window.updateForm.getElementsByTagName("form") [0].getElementsByClassName("form-control") [0].value;
+      $.ajax({
+        type : 'POST',
+        url : 'postUpdate.php',
+        data : 'newMessage',
+        dataType : 'json',
+        encode :true
+      });
+    console.log(event.preventDefault())
+    });
   });
+
 </script>
 
 <%= link_to new_post_path do %>
@@ -30,6 +38,9 @@
 
 <script>
   function openForm(id) {
+
+
+
     var postID = parseInt(id)
     document.getElementById("updateForm").style.display = "block";
   }
