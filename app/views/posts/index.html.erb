@@ -18,7 +18,7 @@
 <script>
   $(document).ready(function(){
     $('form').submit(function(event){
-      var newMessage = window.updateForm.getElementsByTagName("form") [0].getElementsByClassName("form-control") [0].value;
+      var newMessage = window.updateForm.getElementsByClassName("form-control") [0].value;
       $.ajax({
         type : 'POST',
         url : 'postUpdate.php',
