@@ -1,51 +1,56 @@
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<!-- replace with jquery gem -->
-<% @posts.each do |post| %>
-  <div class="post">
-    <p><%= post.message %></p>
-    <button onclick="openForm(<%= post.id %>)">Update</button>
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <!-- replace with jquery gem -->
+</head>
+
+<body>
+  <% @posts.each do |post| %>
+    <div class="post">
+      <p><%= post.message %></p>
+      <button onclick="openForm(<%= post.id %>)">Update</button>
+    </div>
+
+  <% end %>
+  <div class="form-popup" id="updateForm">
+    <form action='postUpdate.rb' method='POST'>
+      <label for="name">Name</label>
+      <input type="text" class='form-control' name="newMessage"></input>
+      <button type="submit" class="Submit" >Submit</button>
+      <button type="button" class="cancel" onclick="closeForm()">Cancel</button>
+    </form>
   </div>
-
-<% end %>
-<div class="form-popup" id="updateForm">
-  <form action='postUpdate.php' method='POST'>
-    <label for="name">Name</label>
-    <input type="text" class='form-control' name="newMessage"></input>
-    <button type="submit" class="Submit" >Submit</button>
-    <button type="button" class="cancel" onclick="closeForm()">Cancel</button>
-  </form>
-</div>
-<script>
-  $(document).ready(function(){
-    $('form').submit(function(event){
-      var newMessage = window.updateForm.getElementsByClassName("form-control") [0].value;
-      $.ajax({
-        type : 'POST',
-        url : 'postUpdate.php',
-        data : 'newMessage',
-        dataType : 'json',
-        encode :true
+  <script>
+    $(document).ready(function(){
+      $('form').submit(function(event){
+        var newMessage = window.updateForm.getElementsByClassName("form-control") [0].value;
+        .ajax({
+          type : 'POST',
+          url : 'postUpdate.rb',
+          data : 'newMessage', 'postID'
+          dataType : 'json',
+          encode :true
+        });
+        event.preventDefault();
       });
-    console.log(event.preventDefault())
     });
-  });
 
-</script>
+  </script>
 
-<%= link_to new_post_path do %>
-  New post
-<% end %>
+  <%= link_to new_post_path do %>
+    New post
+  <% end %>
 
-<script>
-  function openForm(id) {
+  <script>
+    function openForm(id) {
+      <!-- used global variable -->
+      postID = parseInt(id)
+      document.getElementById("updateForm").style.display = "block";
+    }
 
-
-
-    var postID = parseInt(id)
-    document.getElementById("updateForm").style.display = "block";
-  }
-
-  function closeForm() {
-    document.getElementById("updateForm").style.display = "none";
-  }
-</script>
+    function closeForm() {
+      document.getElementById("updateForm").style.display = "none";
+    }
+  </script>
+</body>
