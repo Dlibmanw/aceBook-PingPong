@@ -5,25 +5,23 @@
     <p><%= post.message %></p>
     <button onclick="openForm(<%= post.id %>)">Update</button>
   </div>
-  
+
 <% end %>
 
 <div class="form-popup" id="updateForm">
-  <form>
+  <form >
     <label for="message">
-    <textarea class="message"><%= Post.find_by($postID).message %></textarea>
-    <button type="submit" class="Submit">Submit</button>
+    <input type="text" name="newMessage"></input>
+    <button type="button" class="Submit" >Submit</button>
     <button type="button" class="cancel" onclick="closeForm()">Cancel</button>
   </form>
 </div>
 
 <script>
-$(document).ready(function(){
   $("button.Submit").click(function(){
-    var updatedPost = $("message")
+    var newMessage = 'text'
     <!-- alert("did it work"); -->
   });
-});
 </script>
 
 <%= link_to new_post_path do %>
