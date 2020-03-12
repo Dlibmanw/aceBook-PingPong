@@ -1,0 +1,3 @@
+class PostUpdateController < ApplicationController
+
+end

@@ -11,10 +11,10 @@
       <p><%= post.message %></p>
       <button onclick="openForm(<%= post.id %>)">Update</button>
     </div>
-
   <% end %>
+  
   <div class="form-popup" id="updateForm">
-    <form action='postUpdate.rb' method='POST'>
+    <form action='post_update' method='POST'>
       <label for="name">Name</label>
       <input type="text" class='form-control' name="newMessage"></input>
       <button type="submit" class="Submit" >Submit</button>
@@ -25,12 +25,15 @@
     $(document).ready(function(){
       $('form').submit(function(event){
         var newMessage = window.updateForm.getElementsByClassName("form-control") [0].value;
-        .ajax({
+        $.ajax({
           type : 'POST',
-          url : 'postUpdate.rb',
+          url : 'post_update',
           data : 'newMessage', 'postID'
           dataType : 'json',
           encode :true
+        });
+        .done(function(data){
+          console.log('hello');
         });
         event.preventDefault();
       });
