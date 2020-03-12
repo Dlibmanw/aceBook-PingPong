@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
   <%= javascript_include_tag('post.js') %>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js" type="text/javascript"></script>
 </head>
 
 <body>
   <% @posts.each do |post| %>
     <div class="post">
       <p><%= post.message %></p>
-      <button onclick=openForm(<%= post.id %>)>Update</button>
+      <button onclick="openForm(<%= post.id %>)">Update</button>
     </div>
   <% end %>
 
