@@ -2,17 +2,17 @@
 <html>
 <head>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-  <!-- replace with jquery gem -->
+  <%= javascript_include_tag('post.js') %>
 </head>
 
 <body>
   <% @posts.each do |post| %>
     <div class="post">
       <p><%= post.message %></p>
-      <button onclick="openForm(<%= post.id %>)">Update</button>
+      <button onclick=openForm(<%= post.id %>)>Update</button>
     </div>
   <% end %>
-  
+
   <div class="form-popup" id="updateForm">
     <form action='post_update' method='POST'>
       <label for="name">Name</label>
@@ -21,39 +21,10 @@
       <button type="button" class="cancel" onclick="closeForm()">Cancel</button>
     </form>
   </div>
-  <script>
-    $(document).ready(function(){
-      $('form').submit(function(event){
-        var newMessage = window.updateForm.getElementsByClassName("form-control") [0].value;
-        $.ajax({
-          type : 'POST',
-          url : 'post_update',
-          data : 'newMessage', 'postID'
-          dataType : 'json',
-          encode :true
-        });
-        .done(function(data){
-          console.log('hello');
-        });
-        event.preventDefault();
-      });
-    });
-
-  </script>
 
   <%= link_to new_post_path do %>
     New post
   <% end %>
 
-  <script>
-    function openForm(id) {
-      <!-- used global variable -->
-      postID = parseInt(id)
-      document.getElementById("updateForm").style.display = "block";
-    }
-
-    function closeForm() {
-      document.getElementById("updateForm").style.display = "none";
-    }
-  </script>
 </body>
+</html>
