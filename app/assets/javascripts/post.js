@@ -7,7 +7,7 @@ var callback = function(){
     $.ajax({
       type : 'POST',
       url : 'post_update',
-      data : 'newMessage',
+      data : "{newMessage: 'newMessage', postID: 'postId'}",
       dataType : 'json',
       encode :true
     });
