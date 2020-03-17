@@ -33,7 +33,7 @@ class PostsController < ApplicationController
 
   def destroy 
     @post = Post.find(params[:id])
-    if @post.user_id === current_user.id
+    if @post.by_user?(current_user)
       @post.destroy
     else 
       flash[:alert] = "Error: can't delete posts by other users"
