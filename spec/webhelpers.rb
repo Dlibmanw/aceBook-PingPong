@@ -14,7 +14,7 @@ def create_test_user_and_login(email, password)
 end 
 
 def create_post(message)
-  click_link "New post"
+  click_button "New Post"
   fill_in "Message", with: message
   click_button "Submit"
 end
