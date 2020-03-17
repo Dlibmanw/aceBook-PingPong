@@ -17,4 +17,5 @@ RSpec.feature "Photo Album", type: :feature do
     # expect(page).to have_button('photo_image')
     # expect(page).to have_button("Create photo")
   end
+
 end
