@@ -7,7 +7,7 @@ end
 
 def sign_up_with_name(name, email, password)
   visit('/users/sign_up')
-  fill_in "name", with: name
+  fill_in "user_name", with: name
   fill_in "user_email", with: email
   fill_in "user_password", with: password
   click_button("Sign up")
