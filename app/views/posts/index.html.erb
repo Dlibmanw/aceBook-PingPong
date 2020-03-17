@@ -12,11 +12,4 @@
 <% end %>
 
 </div>
-
-<div>
-
-</div>
-
-<%= link_to new_post_path do %>
-  New post
-<% end %>
+<%= button_to "New Post", new_post_path, :method => "get" %>
