@@ -8,12 +8,12 @@ RSpec.feature "Photo Album", type: :feature do
     expect(page).to have_link("New photo")
   end
 
-  # scenario "a user can view the new photo form" do
-  #   sign_up("josh@example.com", "1234567")
-  #   visit("/photos")
-  #   click_link("New photo")
-  #   expect(current_path).to eq("/photos/new")
-  #   expect(page).to have_selector(:link_or_button, 'Choose file')
-  #   # expect(page).to have_button("Create photo")
-  # end
+  scenario "a user can view the new photo form" do
+    sign_up("josh@example.com", "1234567")
+    visit("/photos")
+    click_link("New photo")
+    expect(current_path).to eq("/photos/new")
+    page.attach_file("photo_image", Rails.root + 'spec/support/images/cute-dog.jpg')
+    click_button "Create Photo"
+  end
 end
