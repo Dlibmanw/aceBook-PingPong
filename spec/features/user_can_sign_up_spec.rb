@@ -31,5 +31,7 @@ RSpec.feature "Sign up", type: :feature do
     sign_up("test@example.com", "12345678910")
     expect(page).to have_content("Password is too long")
   end
+  
+  
 
 end
