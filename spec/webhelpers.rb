@@ -26,3 +26,11 @@ def create_post(message)
   fill_in "Message", with: message
   click_button "Submit"
 end
+
+def create_photo
+  visit("/photos")
+    click_link("New photo")
+    expect(current_path).to eq("/photos/new")
+    page.attach_file("photo_image", Rails.root + "spec/support/images/cute-dog.jpg")
+    click_button "Create Photo"
+end
