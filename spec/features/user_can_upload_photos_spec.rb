@@ -15,5 +15,6 @@ RSpec.feature "Photo Album", type: :feature do
     expect(current_path).to eq("/photos/new")
     page.attach_file("photo_image", Rails.root + 'spec/support/images/cute-dog.jpg')
     click_button "Create Photo"
+    expect(page).to have_css("img[src*='cute-dog.jpg']")
   end
 end
