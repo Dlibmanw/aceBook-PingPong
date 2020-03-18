@@ -1,0 +1,10 @@
+<%= form_for @user do |f| %>
+ 
+  <div style="display:none">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+ 
+  <%= f.submit %>
+<% end %>
+
