@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def edit 
+    @user = User.find(params[:id])
     @photo = Photo.find(params[:id])
   end 
 
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:photo_id)
+    params.permit(:photo_id)
   end
 
 end
