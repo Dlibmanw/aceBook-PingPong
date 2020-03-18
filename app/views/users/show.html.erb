@@ -1,1 +1,6 @@
 <h1><%= @user.name %></h1>
+<div>
+<% @photos.order(created_at: :desc).each do |photo| %>
+        <%= image_tag(photo.image.url, alt: 'Image') if photo.image? %>
+<% end %>
+</div>
