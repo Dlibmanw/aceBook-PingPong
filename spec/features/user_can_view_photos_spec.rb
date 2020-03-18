@@ -11,10 +11,11 @@ RSpec.feature "View Photos", type: :feature do
 
   scenario "View other users photos" do
     User.create(id: 1, name: 'Test Name', email: 'signin_test@example.com', password: '123456')
-    Photo.create(remote_image_url: 'image.png', user_id: 1)
+    Photo.create!(remote_image_url: 'https://homepages.cae.wisc.edu/~ece533/images/airplane.png', user_id: 1)
     sign_up_with_name('test-user', 'test@example.com', '123456')
     visit '/users/1'
+    save_and_open_page
     expect(page).to have_content('Test Name')
-    expect(page).to have_css("img[src*='image.png']")
+    expect(page).to have_css("img[src*='airplane.png']")
   end
 end
