@@ -6,10 +6,10 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(current_user.id)
-    @photo = Photo.find(params[:id])
-  end 
+    @photo = Photo.find_by(user_id: current_user.id)
+  end
 
-  def update  # This should be 5 not 7 in table
+  def update
     @user = User.update(photo_params)
     redirect_to user_url
   end
@@ -17,8 +17,7 @@ class UsersController < ApplicationController
   private
 
   def photo_params
-    p params[:id]
-    params.permit(:photo_id).merge(photo_id: params[:id])
+    params.require(:image_id).permit(:photo_id).merge(photo_id: Photo.find_by(user_id: current_user.id))
   end
 
 end
