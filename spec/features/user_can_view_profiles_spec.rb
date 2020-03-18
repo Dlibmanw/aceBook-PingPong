@@ -9,6 +9,14 @@ RSpec.feature "View Photos", type: :feature do
 
   scenario "Can visit any profile by typing their url" do
     User.create(id: 1, name: 'Test Name', email: 'signin_test@example.com', password: '123456')
+    Post.create(message: "Can't update test", user_id: 1)
+    sign_up_with_name('test-user', 'test@example.com', '123456')
+    first(".post").click_on "Test Name"
+    expect(current_path).to eq '/users/1'
+  end
+
+  scenario "Can visit any profile by typing their url" do
+    User.create(id: 1, name: 'Test Name', email: 'signin_test@example.com', password: '123456')
     sign_up_with_name('test-user', 'test@example.com', '123456')
     visit '/users/1'
   end
@@ -18,4 +26,5 @@ RSpec.feature "View Photos", type: :feature do
     visit '/users/2'
     expect(page).to have_content("Error: User doesn't exist") 
   end
+
 end
