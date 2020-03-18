@@ -10,6 +10,9 @@ class UsersController < ApplicationController
   end
 
   def update
+    #"user"=>{"photo_id"=>""}
+    #Need to update the photo ID coloum in the USERS table with the id of the phote they have selected
+    
     @user = User.update(photo_params)
     redirect_to user_url
   end
@@ -17,7 +20,7 @@ class UsersController < ApplicationController
   private
 
   def photo_params
-    params.require(:image_id).permit(:photo_id).merge(photo_id: Photo.find_by(user_id: current_user.id))
+    params.permit(:photo_id).merge(photo_id: Photo.find_by(user_id: current_user.id))
   end
 
 end
