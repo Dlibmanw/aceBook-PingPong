@@ -1,8 +1,9 @@
 <%= form_for @user do |f| %>
  
   <div style="display:none">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
+    <%= f.label :image_id %>
+    <%= @photo %>
+    
   </div>
  
   You are attempting to change your profile picture
