@@ -13,9 +13,8 @@ RSpec.feature "Photo Album", type: :feature do
     visit("/photos")
     click_link("New photo")
     expect(current_path).to eq("/photos/new")
-    # the below line is failing
-    # expect(page).to have_button('photo_image')
-    # expect(page).to have_button("Create photo")
+    page.attach_file("photo_image", Rails.root + 'spec/support/images/cute-dog.jpg')
+    click_button "Create Photo"
+    expect(page).to have_css("img[src*='cute-dog.jpg']")
   end
-
 end
