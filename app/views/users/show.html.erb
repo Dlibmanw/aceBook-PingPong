@@ -1,8 +1,10 @@
 <h1><%= @user.name %></h1>
-<h2>profile picture:</h2>
 <div>
   <% if !@profile_photo.nil? %>
-  <%= image_tag(@profile_photo.image.url, alt: 'Image') if @profile_photo.image? %>
+    <h2>profile picture:</h2>
+    <%= image_tag(@profile_photo.image.url, alt: 'Image') if @profile_photo.image? %>
+  <% else %>
+    <%= @user.name %> has not set a profile picture.
   <% end %>
 </div>
 <div>
