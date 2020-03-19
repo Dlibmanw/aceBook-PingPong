@@ -1,7 +1,6 @@
   require 'rails_helper'
   RSpec.feature "Profile Picture", type: :feature do
 
-  
     scenario "a user can select a picture as their profile picture" do
       sign_up_with_name("Josh", "josh@example.com", "1234567")
       visit("/photos")
@@ -17,4 +16,5 @@
       expect(page).to have_content("profile picture:")
       expect(page).to have_css("img[src*='cute-dog.jpg']")
     end
+    
   end

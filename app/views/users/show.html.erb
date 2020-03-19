@@ -1,5 +1,5 @@
 <h1><%= @user.name %></h1>
-<div>
+<div id="profile_picture">
   <% if !@profile_photo.nil? %>
     <h2>profile picture:</h2>
     <%= image_tag(@profile_photo.image.url, alt: 'Image') if @profile_photo.image? %>
@@ -7,7 +7,7 @@
     <%= @user.name %> has not set a profile picture.
   <% end %>
 </div>
-<div>
+<div id="all_pictures">
   <% @photos.order(created_at: :desc).each do |photo| %>
     <%= image_tag(photo.image.url, alt: 'Image') if photo.image? %>
   <% end %>
