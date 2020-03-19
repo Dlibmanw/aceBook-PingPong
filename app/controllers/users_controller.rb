@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id]) 
-    @profile_photo = Photo.find_by(id: @user.photo_id)
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])
+      @photos = Photo.where(user_id: @user.id)
+      @profile_photo = Photo.find_by(id: @user.photo_id)
+    else
+      flash[:alert] = "Error: User doesn't exist"
+      redirect_to posts_path
+    end
   end
 
   def edit
