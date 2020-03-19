@@ -29,7 +29,7 @@ end
 
 def create_photo
   visit("/photos")
-  click_link("New photo")
+  click_button("New photo")
   expect(current_path).to eq("/photos/new")
   page.attach_file("photo_image", Rails.root + "spec/support/images/cute-dog.jpg")
   click_button "Create Photo"

@@ -1,6 +1,11 @@
 <h1><%= @user.name %></h1>
+<h2>profile picture:</h2>
+<h3><%= image_tag(@profile_photo.image.url, alt: 'Image') if @profile_photo.image? %></h3>
 <div>
-<% @photos.order(created_at: :desc).each do |photo| %>
-        <%= image_tag(photo.image.url, alt: 'Image') if photo.image? %>
+  <% @photos.order(created_at: :desc).each do |photo| %>
+    <%= image_tag(photo.image.url, alt: 'Image') if photo.image? %>
 <% end %>
 </div>
+
+
+

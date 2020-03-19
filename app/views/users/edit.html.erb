@@ -1,0 +1,12 @@
+<%= form_for @user do |f| %>
+ 
+  <div style="display:none">
+    <%= f.label :image_id %>
+    <%= f.text_area :photo_id %>
+  </div>
+ 
+  You are attempting to change your profile picture
+  <%= f.submit "Confirm?" %>
+
+<% end %>
+
