@@ -15,6 +15,9 @@
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
+  <% if !current_user.nil? %>
+      <a href='/users/<%= current_user.id %>'>My profile</a>
+  <% end %>
     <%= yield %>
   </body>
 </html>
