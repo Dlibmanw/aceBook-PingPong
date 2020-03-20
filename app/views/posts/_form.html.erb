@@ -1,5 +1,11 @@
+<div>
 <%= form_for @post do |form| %>
-  <%= form.label :message %>
-  <%= form.text_area :message %>
-  <%= form.submit "Submit" %>
+<div class="form-group">
+  <%= form.label :message  %>
+  <%= form.text_area :message, class: "form-control" %>
+</div>
+  <%= form.submit "Submit", class: "btn btn-info" %>
 <% end %>
+</div>
+
+

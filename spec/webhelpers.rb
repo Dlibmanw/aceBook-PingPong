@@ -22,15 +22,15 @@ def create_test_user_and_login(email, password)
 end 
 
 def create_post(message)
-  click_button "New Post"
+  click_on "New Post"
   fill_in "Message", with: message
-  click_button "Submit"
+  click_on "Submit"
 end
 
 def create_photo
   visit("/photos")
-  click_button("New photo")
+  click_on("New photo")
   expect(current_path).to eq("/photos/new")
   page.attach_file("photo_image", Rails.root + "spec/support/images/cute-dog.jpg")
-  click_button "Create Photo"
+  click_on "Create Photo"
 end

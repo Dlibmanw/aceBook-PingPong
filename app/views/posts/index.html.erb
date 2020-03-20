@@ -1,14 +1,15 @@
-<div>
+<div class="container pt-5" style="max-width: 800px">
   <% @posts.order(created_at: :desc).each do |post| %>
-    <div class="post">
+    <div class="post card mb-3 border-secondary"  style="width: 100;" >
+    <div class="card-body">
+    <h5 class="card-title"><a class="text-info" href="/users/<%= post.user_id %>"><%= User.find_by(id: post.user_id).name %></a></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= post.created_at.strftime('%e %B at %H:%M') %></h6>
       <p><%= render partial: "line_breaks", locals: {post: post} %></p>
-      <a href="/users/<%= post.user_id %>"><%= User.find_by(id: post.user_id).name %></a>
-      <p><%= post.created_at.strftime('%e %B at %H:%M') %></p>
-      <%= button_to 'Update', edit_post_path(post), method: :get, :class => 'btn btn-default' %>
-      <%= button_to "Delete", post_path(post), method: :delete, data:{}, :class => 'btn btn-default' %>
+      
+      <%= link_to 'Update', edit_post_path(post), method: :get, :class => 'card-link text-info'  %>
+      <%= link_to "Delete", post_path(post), method: :delete, data:{}, :class => 'card-link text-info' %>
+    </div>
     </div>
   <% end %>
 </div>
-
-<%= button_to "New Post", new_post_path, :method => "get" %>
 
