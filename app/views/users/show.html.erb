@@ -9,8 +9,11 @@
 </div>
 </div>
 <div class="container border border-secondary mt-4">
-<div class="container m-2 mt-4">
+<div class="container m-2 mt-4 d-flex justify-content-between">
 <h2>Photos</h2>
+<% if current_user == @user %>
+  <a class="btn btn-info" href="/photos">Edit my photos</a>
+<% end %>
 </div>
 <div class="row" id="all_pictures">
   <% @photos.order(created_at: :desc).each do |photo| %>
@@ -24,6 +27,4 @@
   <% end %>
   </div>
 </div>
-
-
 
