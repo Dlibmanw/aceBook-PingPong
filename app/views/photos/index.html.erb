@@ -1,13 +1,25 @@
-<div>
-<% @photos.order(created_at: :desc).each do |photo| %>
-  
-    <% if current_user.id == photo.user_id %>
-        <%= image_tag(photo.image.url, alt: 'Image') if photo.image? %>
-        <%= button_to "Make Profile Pic", edit_user_path(current_user, photo), method: :get, :class => 'btn btn-default' %>
-        <%= button_to "Delete", photo_path(photo), method: :delete, data:{}, :class => 'btn btn-default' %>
-        <%= button_to "Edit", edit_photo_path(photo), method: :get, :class => 'btn btn-default' %>
+<div class="container pt-5">
+<%= button_to 'New photo', new_photo_path, method: :get, :class => 'btn btn-info btn-lg' %>
+<div class="container border border-secondary mt-4">
+<div class="container m-2 mt-4">
+<h2>My Photos</h2>
+</div>
+<div class="row" id="all_pictures">
+    <% @photos.order(created_at: :desc).each do |photo| %>
+        <div class="col-md-4">
+        <% if current_user.id == photo.user_id %>
+            <div class="card mb-2 border-0">
+              <div class="card-body">
+                <%= image_tag(photo.image.url, alt: 'Image', width: "100%", height: "300px") if photo.image? %>
+                <%= link_to "Make Profile Pic", edit_user_path(current_user, photo), method: :get, :class => 'card-link text-info' %>
+                <%= link_to "Delete", photo_path(photo), method: :delete, data:{}, :class => 'card-link text-info' %>
+                <%= link_to "Edit", edit_photo_path(photo), method: :get, :class => 'card-link text-info' %>
+              </div>
+          </div>
+        <% end %>
+        </div>
     <% end %>
-<% end %>
+</div>
 </div>
 
-<%= button_to 'New photo', new_photo_path, method: :get, :class => 'btn btn-default' %>
+</div>
