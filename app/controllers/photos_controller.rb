@@ -22,9 +22,13 @@ class PhotosController < ApplicationController
     redirect_to photos_url
   end
 
-  def destroy 
+  def destroy
     @photo = Photo.find(params[:id])
-    @photo.destroy
+    if @photo.id == current_user.photo_id 
+      flash[:alert] = "Can't delete current profile picture, Please change your profile picture"
+    else 
+      @photo.destroy
+    end 
     redirect_to photos_path
   end
 
