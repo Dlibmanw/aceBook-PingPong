@@ -1,12 +1,7 @@
-
-
-<div class="container pt-5 d-flex justify-content-center" style="max-width: 800px">
+<div class="container pt-5" style="max-width: 800px">
 <div class="post card mb-3 border-secondary"  style="width: 100;" >
 <div class="card-body">
-
 <h2 class="text-info "> <a>Log In</a></h2>
-
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -24,14 +19,12 @@
       <%= f.label :remember_me %>
     </div>
   <% end %>
+ <br>
+  <div class="actions "> 
 
-  <div class="actions ">
-    <%= f.submit "Log in" %>
-    
-    <button type="button"><%= render "devise/shared/links" %>
+    <%= f.submit "Log in", class: 'card-link btn btn-info' %>
   </div>
 <% end %>
-
 
 </div>
 </div>
