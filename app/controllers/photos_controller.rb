@@ -27,7 +27,7 @@ class PhotosController < ApplicationController
     if @photo.id == current_user.photo_id 
       flash[:alert] = "Can't delete current profile picture, Please change your profile picture"
     else 
-    @photo.destroy
+      @photo.destroy
     end 
     redirect_to photos_path
   end
