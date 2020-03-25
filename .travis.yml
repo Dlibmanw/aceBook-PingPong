@@ -4,14 +4,18 @@ rvm:
 env:
   global:
   - CC_TEST_REPORTER_ID=18fcb1674448a0f6f36c0b849ca7bb1f7e9c1fa72688fce866e1add6044cd073
+  - secure: yMX3S+RXPnksIfq5vBhphVHeYI4GAeh1DKFPMi+9URseoDEUY6BI679s3YvRode0yIgeGpMyAcXzvYX7wh8jtZuRT9PCXPSkZH8hTfj7jNTORDpDGdbFUFNthDW63/2v5Pdrfd4Ttm8q1EmownSrzrsLnp1wNNKH9smEwmcUhTF9A+jAYFdPg+nfHgqrcbUA6KiD+cC6Sv+lD9ZOeWyfP1Hgt55Y+f7zE6ZU/ppyWHMfidgoDQVdMyJKBlCUUmKihG73as9IQLue5Ayefqxu0VXp85IYiOPHp2Kvu0ZGSN7P4ZLgESPYz6eqtrDc3alR1XTWUXA6v7K4v//+UD9hZhi9bpRbAMwou1kz4xhl8rpKrtzggqCpFy9hAAk1XSVRDY6Wk24Z6jjY7Vh4rOyMXBhIuE6q1vaRtdh9kxDLIrnIeF5HpzmSbXsH5DSr8rFo4ftfdsI3365zRR81goSjOQ20BCsKhoYvm4SpPOYNDvpLRrZNOQI+WRJ5QMQQ25fnGAENRlvvukffDB6bzvMqxGTu3hx9JVQtTEb278o26GI50u9eXm8w9CNHptUVW84IpP/coQLUv+95LRRiiCoXkYkBu1lXS1H7n5b/CscA33zOU+U+g+sPpRe844TlzqicLdqXrM6z72f35K4r9SCUtKk8BElF8GrPi8CWRj4Qgsg=
+  - secure: YaSrLutffVqK/v70TW6siyO0nbRUK1PETVRovy/g5TUiqQtrf7ADoFlFxcYRYjo8wus0IehjRLbwvZIqFN10FLEBWatqEHHFa4iATp7owoMTTUYHjA96/aMJbnsUQMQ7sUx0Nr+iG225b5Z1qRqz7A3P0MydlUyxDq8gkGLNi/dfdYtsHog3seeFfeowPDD4D7/8oPD4Usyak3baa6hHt0qsr7JjErZuhduSp4zMHoo2D8DzxxNaT8oO8cCC+/FDaIAwAJcfLKSYg2fxuEPp1gx7Dr10ZCgkucgo7ifOwWqgrQ3WichxJc793T0uoDDldIO8w9JBrWL2N6M9AplBYSxd+2k0wnxTTx8IYXCJ+MaMWzkSEP52IP1sDnayEIjaWKWtcUoLMqMhI521TzKw9TLHzT78pEvuuNIQSgdZzxsTABqzFTjxoMtb9FSdTQHw2ieQ53QjGigepMvKgFZqS72Hu/wJ4YzorTC/N285vHIZAxpk4gF/NL2hnlPNIUzyE2WPanOdY2igtRB1jNrxIYnhE7ym9HrxjLqz2uiRm1wKvDV1ctQt4dURfpkM+X6BuA51ULHSeLLmy71hMdqNgo0zYsusgd6N5MJMseStTHzcGLmDOCK0h3nrX6MD3QSjdpryVvi6ZfoSVaRGjeYd6wn3tcuOyEPEYcArLag8aGo=
+  - secure: yMdpYMV+SfPZkHKiyfKgRaT+1/15Mkk2+uHSOjoYgodWUmq1HCyRVrbil3syvxxa8Y0maNMvQbSKi4BvTq2b+AVJp9leqZEYXJd2uit2Ifn+q99DwmaMQZpdA4FhHiXFk0RwWCa7Zv5pVcmXuuZwGu5fRuqd4o2vEyBwgIj2UWcPb3/ZLUzaae10HiJ1CLKnqHKt7mZzp565wEIOmloghdGMah7FsP/tLwW+VpdB19BZQqVMfxPsR5cNpq+ZHq9pFDWvLKDhAfxXObdwWp0bLJ0V8bX+20eDSbwnSqBALuFBbiiXjK6dMUei2eAfi7F1Z2xrxCp3moi3n3cS1yOUtOKUNeun/w0/D5Q/SBHUPhYAiC5Ju1TOzWQ6jhtwgGqUCyAbpntIkXusdp+xxuTIAdzOAyyYAi3UBfJO3u8kvwuDJoccQqL14f/uP5oSBRrUEr4ddG5vpuahNukjL0jM46kbBZ3SdwqhoB8uKdPQg/k87hcRsZFM38rgWI/hioLBuGIidyp45kiambBuUA6Tujwg/h6Y5UFOga/oJJg+RfX1S6r7gH0phad+RVgf7ZNrvYDXcrA6Mm7gzqgH0BSDpUDa1IplFI0UMO/EkZv3/u8LzFOz01tV1PYXxPJTEsG8VBIxt3e7/Yh+NrnrLEnKg21pg1nnQro/E9jkCSEdZa8=
 services:
 - postgresql
 before_script:
 - bundle exec rails db:create
 - bundle exec rails db:migrate
-- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
 - chmod +x ./cc-test-reporter
-- ./cc-test-reporter before-build
+- "./cc-test-reporter before-build"
 script:
 - bundle
 - bundle exec rspec
@@ -20,7 +24,7 @@ branches:
   only:
   - master
 after_script:
-- ./cc-test-reporter after-build -t simplecov --exit-code $TRAVIS_TEST_RESULT
+- "./cc-test-reporter after-build -t simplecov --exit-code $TRAVIS_TEST_RESULT"
 deploy:
   provider: heroku
   skip_cleanup: true
