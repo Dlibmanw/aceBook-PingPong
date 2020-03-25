@@ -488,3 +488,5 @@ Style/WordArray:
   Enabled: false
 Style/ZeroLengthPredicate:
   Enabled: false
+Rails/FilePath:
+  Enabled: false
