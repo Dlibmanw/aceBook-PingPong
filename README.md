@@ -27,8 +27,8 @@ User stories, which we designed from the specifications, can be found [here](htt
 
 ### Prerequisite setup:
 - Clone this repo to your local machine and cd into it
-- Run `gem install bundle` (if you don't have bundle already)
-- Run `bundle` to install the projects dependencies
+- Run `gem install bundle` (if you don't have bundler already)
+- Run `bundle` to install the project's dependencies
 
 ### Database setup:
 
